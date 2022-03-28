@@ -1,33 +1,31 @@
 <div class="card card-custom">
   <form data-kt-search-element="form" class="w-100 position-relative mb-3" autocomplete="off"
     [formGroup]="resetFormGroup">
-    <h5 class="mt-4 mb-3 text-left" style="margin: 10px;">Change Password</h5>
+    <h5 class="mt-4 mb-3 text-left" style="margin: 10px;">Split  amount group</h5>
     <div class="mb-10 fv-row" style="margin: 10px;">
-      <input type="text" class="form-control form-control-lg form-control-solid" name="Total Amount " value=""
+      <input type="text" class="form-control form-control-lg form-control-solid" name="Total Amount " value=""   formControlName="totalAmount"
         placeholder="Total Amount" data-kt-search-element="input" />
     </div>
     <div class="row" style="width: 100%; ">
       <div style="margin: 10px; ">
         <select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select Member Name"
-          data-allow-clear="true">
-          <option></option>
-          <option selected value="1">Pawani Suriyaarachchi</option>
-          <option value="2">Piyumi Herath</option>
-          <option value="3">Nuwani Perera</option>
-          <option value="4">Kapila Jayawardena</option>
+          data-allow-clear="true"   formControlName="memberName">
+          <option selected value="Pawani Suriyaarachchi">Pawani Suriyaarachchi</option>
+          <option value="Piyumi Herath">Piyumi Herath</option>
+          <option value="Nuwani Perera">Nuwani Perera</option>
+          <option value="Kapila Jayawardena">Kapila Jayawardena</option>
         </select>
       </div>
       <div style="margin: 10px;">
         <select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select divide type"
-          data-allow-clear="true">
-          <option></option>
-          <option selected value="1">Precentage</option>
-          <option value="2">Fixed</option>
+          data-allow-clear="true"  formControlName="type">
+          <option selected value="PERCENTAGE">Precentage</option>
+          <option value="FIXED">Fixed</option>
         </select>
       </div>
       <div style="margin: 10px;">
       <input type="text" class="form-control form-control-lg form-control-solid" name="value" value=""
-        placeholder="value" data-kt-search-element="input" />
+        placeholder="value" data-kt-search-element="input"  formControlName="value"/>
       </div>
     </div>
     <div class="mt-3" style="margin: 10px;">
@@ -44,7 +42,6 @@
     <div class="card-header card-header-stretch overflow-auto">
      <h3 style="margin-top: 10px">Added member details</h3>
     </div>
-    <form class="form" novalidate #form="ngForm" (ngSubmit)="submitPreview()">
       <!-- begin::Body -->
       <div class="card-body">
           <!-- begin::Header -->
@@ -71,5 +68,4 @@
             </table>
           </div>
       </div>
-    </form>
   </div>

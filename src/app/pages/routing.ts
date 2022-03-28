@@ -24,6 +24,16 @@ const Routing: Routes = [
       import('./split-amount/split-amount.module').then((m) => m.SplitAmountModule),
   },
   {
+    path: 'payment',
+    loadChildren: () =>
+      import('./view-my-payments/view-my-payments.module').then((m) => m.ViewMyPaymentsModule),
+  },
+  {
+    path: 'pending-payments',
+    loadChildren: () =>
+      import('./pending-payments/pending-payments.module').then((m) => m.PendingPaymentsModule),
+  },
+  {
     path: 'crafted/pages/profile',
     loadChildren: () =>
       import('../modules/profile/profile.module').then((m) => m.ProfileModule),

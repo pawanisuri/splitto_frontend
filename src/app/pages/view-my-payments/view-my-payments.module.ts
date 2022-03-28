@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { GroupComponent } from './group.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
-import { EditGroupComponent } from './edit-group/edit-group.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { NewGroupComponent } from './new-group/new-group.component';
+import { ViewMyPaymentsComponent } from './view-my-payments.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
-  declarations: [GroupComponent, EditGroupComponent, NewGroupComponent],
+  declarations: [ViewMyPaymentsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,13 +23,18 @@ import { NewGroupComponent } from './new-group/new-group.component';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
     RouterModule.forChild([
       {
         path: '',
-        component: GroupComponent,
+        component: ViewMyPaymentsComponent,
       },
     ]),
+
   ],
 })
 
-export class GroupModule {}
+export class ViewMyPaymentsModule {}

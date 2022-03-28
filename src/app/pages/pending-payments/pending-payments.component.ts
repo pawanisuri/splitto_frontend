@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { LayoutService } from 'src/app/_metronic/layout';
-import { EditGroupComponent } from './edit-group/edit-group.component';
-import {MatDialog} from '@angular/material/dialog';
-import { DeleteDialogBoxComponent } from '../shared/delete-dialog-box/delete-dialog-box.component';
-export interface PeriodicElement {
+import { MatDialog } from '@angular/material/dialog';
 
-  position: number;
+
+export interface PeriodicElement {
   name: string;
+  position: number;
   weight: number;
   symbol: string;
 }
@@ -24,16 +23,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
+
+
 type Tabs = 'Header' | 'Toolbar' | 'PageTitle' | 'Aside' | 'Content' | 'Footer';
+
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['group.component.scss']
-
+  selector: 'app-pending-payments',
+  templateUrl: './pending-payments.component.html',
+  styleUrls: ['./pending-payments.component.scss']
 })
+export class PendingPaymentsComponent implements OnInit {
 
-export class GroupComponent implements OnInit {
-  groupForm:FormGroup;
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
   activeTab: Tabs = 'Header';
@@ -49,9 +50,6 @@ export class GroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.model = this.layout.getConfig();
-    this.groupForm = new FormGroup({
-    });
-    console.log(this.dataSource,this.displayedColumns)
   }
 
   setActiveTab(tab: Tabs) {
@@ -69,30 +67,4 @@ export class GroupComponent implements OnInit {
     location.reload();
   }
 
-
-
-  edit(): void {
-    const dialogRef = this.dialog.open(EditGroupComponent, {
-      position:{top:'10%', bottom:'10%'},
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
-
-
-  delete(): void {
-    const dialogRef = this.dialog.open(DeleteDialogBoxComponent, {
-      position:{top:'10%', bottom:'10%'},
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
 }

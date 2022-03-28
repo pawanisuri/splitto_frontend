@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { LayoutService } from 'src/app/_metronic/layout';
 import { MatDialog } from '@angular/material/dialog';
 export interface PeriodicElement {
@@ -8,10 +8,7 @@ export interface PeriodicElement {
   value: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
 
-
-];
 
 @Component({
   selector: 'app-split-amount',
@@ -22,7 +19,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class SplitAmountComponent implements OnInit {
   resetFormGroup: FormGroup;
   displayedColumns: string[] = ['memberName', 'type', 'value'];
-  dataSource = ELEMENT_DATA;
+  dataSource:any=[];
   model: any;
   @ViewChild('form', { static: true }) form: NgForm;
   configLoading: boolean = false;
@@ -38,8 +35,7 @@ export class SplitAmountComponent implements OnInit {
       memberName: new FormControl(''),
       type: new FormControl(''),
       value: new FormControl('')
-    }
-  );
+    });
   }
 
   constructor(private layout: LayoutService,public dialog: MatDialog) {}
@@ -61,10 +57,11 @@ export class SplitAmountComponent implements OnInit {
 
   addMember(){
     let memberObj :any =  {
-      // memberName:  this.resetFormGroup.get('memberName').value? this.resetFormGroup.get('memberName').value: '',
-      // type:  this.resetFormGroup.get('type').value,
-      // value:  this.resetFormGroup.get('value').value
+      memberName:  "sada",
+      type:  "adada",
+      value:  "daddad"
     }
+
     this.dataSource.push(memberObj);
     console.log(this.dataSource, memberObj)
   }
