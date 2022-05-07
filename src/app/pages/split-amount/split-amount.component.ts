@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { LayoutService } from 'src/app/_metronic/layout';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 export interface PeriodicElement {
   memberName: string;
   type: number;
@@ -18,8 +19,27 @@ export interface PeriodicElement {
 
 export class SplitAmountComponent implements OnInit {
   resetFormGroup: FormGroup;
-  displayedColumns: string[] = ['memberName', 'type', 'value'];
-  dataSource:any=[];
+  displayedColumns: Array<{ key: string, header: string }> = [
+    {
+      key: 'memberName',
+      header: 'memberName',
+    },
+    {
+      key: 'type',
+      header: 'type',
+    },
+    {
+      key: 'value',
+      header: 'value',
+    },
+  ];
+  displayedColumnsKeys: string[];
+  // displayedColumns: string[] = ['memberName', 'type', 'value'];
+  dataSourceObj:any = [ {
+    memberName:  "sada",
+    type:  "adada",
+    value:  "daddad"
+  }];
   model: any;
   @ViewChild('form', { static: true }) form: NgForm;
   configLoading: boolean = false;
@@ -36,6 +56,7 @@ export class SplitAmountComponent implements OnInit {
       type: new FormControl(''),
       value: new FormControl('')
     });
+    this.displayedColumnsKeys = this.displayedColumns.map((col) => col.key);
   }
 
   constructor(private layout: LayoutService,public dialog: MatDialog) {}
@@ -61,9 +82,8 @@ export class SplitAmountComponent implements OnInit {
       type:  "adada",
       value:  "daddad"
     }
-
-    this.dataSource.push(memberObj);
-    console.log(this.dataSource, memberObj)
+    this.dataSourceObj.push(memberObj);
+    console.log(this.dataSourceObj)
   }
 
 }

@@ -46,8 +46,8 @@
       <div class="card-body">
           <!-- begin::Header -->
           <div class="tab-pane">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-              <ng-container matColumnDef="memberName">
+            <table >
+              <!-- <ng-container matColumnDef="memberName">
                 <th mat-header-cell *matHeaderCellDef> Member name </th>
                 <td mat-cell *matCellDef="let element"> {{element.memberName}} </td>
               </ng-container>
@@ -60,11 +60,30 @@
               <ng-container matColumnDef="value">
                 <th mat-header-cell *matHeaderCellDef> Value </th>
                 <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-              </ng-container>
+              </ng-container> -->
 
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- <ng-container *ngFor="let dispCol of displayedColumns; let colIndex = index" matColumnDef="{{ dispCol.key }}"> -->
+                <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  {{ dispCol.header }}
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-column-vinCode">
+                  <span *ngIf="dispCol.key === 'memberName'">
+                    {{ element[dispCol.key] }}
+                  </span>
+                  <span *ngIf="dispCol.key !== 'type'">
+                    {{ element[dispCol.key] }}
+                  </span>
+                  <span *ngIf="dispCol.key !== 'value'">
+                    {{ element[dispCol.key] }}
+                  </span>
+                </td> -->
+                <tr *ngFor="let row of dataSourceObj; let i = index">
+                  <td> {{row.memberName}} </td>
+                  <td> {{row.type}} </td>
+              </tr>
+              <!-- </ng-container> -->
+              <!-- <tr mat-header-row *matHeaderRowDef="displayedColumnsKeys; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsKeys;"></tr> -->
             </table>
           </div>
       </div>
