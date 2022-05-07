@@ -6,23 +6,23 @@ import {MatDialog} from '@angular/material/dialog';
 import { DeleteDialogBoxComponent } from '../shared/delete-dialog-box/delete-dialog-box.component';
 export interface PeriodicElement {
 
-  position: number;
+  id: number;
   name: string;
-  weight: number;
-  symbol: string;
+  address: string;
+  number: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {id: 1, name: 'Pawani', address: 'Colombo', number: '0715645677'},
+  {id: 2, name: 'Piyumi', address: 'Kandy', number: '0715209588'},
+  {id: 3, name: 'Nuwani', address: 'Colombo', number: '0771105677'},
+  {id: 4, name: 'Malinga', address: 'Colombo', number: '0715221677'},
+  {id: 5, name: 'Sarath', address: 'Colombo', number: '0775645555'},
+  {id: 6, name: 'Kasun', address: 'Matara', number: '0785655677'},
+  {id: 7, name: 'Dinuka', address: 'Colombo', number: '0755999677'},
+  {id: 8, name: 'Kashmira', address: 'Kurunagala', number: '0710005677'},
+  {id: 9, name: 'Dinusha', address: 'Kandy', number: '0705648347'},
+  {id: 10, name: 'Thusitha', address: 'Matara', number: '0781425677'},
 ];
 type Tabs = 'Header' | 'Toolbar' | 'PageTitle' | 'Aside' | 'Content' | 'Footer';
 @Component({
@@ -34,7 +34,7 @@ type Tabs = 'Header' | 'Toolbar' | 'PageTitle' | 'Aside' | 'Content' | 'Footer';
 
 export class GroupComponent implements OnInit {
   groupForm:FormGroup;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['id', 'name', 'address', 'number'];
   dataSource = ELEMENT_DATA;
   activeTab: Tabs = 'Header';
   model: any;

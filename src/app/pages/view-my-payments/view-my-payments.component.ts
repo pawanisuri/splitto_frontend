@@ -6,23 +6,24 @@ import { EditGroupComponent } from '../group/edit-group/edit-group.component';
 import { DeleteDialogBoxComponent } from '../shared/delete-dialog-box/delete-dialog-box.component';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  id: number;
+  paymentType: String;
+  amount: number;
+  paymentDate: string;
+  status: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {id: 1, paymentType: 'VISA', amount: 100.79, paymentDate: '20th of Jan 2022', status: 'Paid'},
+  {id: 2, paymentType: 'CASH', amount: 4002.00, paymentDate: '20th of Jan 2022',status: 'Paid'},
+  {id: 3, paymentType: 'VISA', amount: 6041, paymentDate: '25th of Jan 2022',status: 'Paid'},
+  {id: 4, paymentType: 'MASTER', amount: 922, paymentDate: '30th of May 2022',status: 'Paid'},
+  {id: 5, paymentType: 'VISA', amount: 1011, paymentDate: '1sth of May 2022',status: 'Paid'},
+  {id: 6, paymentType: 'CASH', amount: 1207, paymentDate: '20th of Mar 2022',status: 'Paid'},
+  {id: 7, paymentType: 'CASH', amount: 14007, paymentDate: '2th of Jan 2022',status: 'Paid'},
+  {id: 8, paymentType: 'VISA', amount: 15994, paymentDate: '20th of Apr 2022',status: 'Paid'},
+  {id: 9, paymentType: 'VISA', amount: 18984, paymentDate: '8th of Sep 2021',status: 'Paid'},
+  {id: 10, paymentType: 'MASTER', amount: 2097, paymentDate: '24th of Nov 2021',status: 'Paid'},
 ];
 
 
@@ -36,7 +37,7 @@ type Tabs = 'Header' | 'Toolbar' | 'PageTitle' | 'Aside' | 'Content' | 'Footer';
 export class ViewMyPaymentsComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['id', 'paymentType', 'amount', 'paymentDate','status'];
   dataSource = ELEMENT_DATA;
   activeTab: Tabs = 'Header';
   model: any;
