@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { LayoutService } from 'src/app/_metronic/layout';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,9 +42,10 @@ export class SplitAmountComponent implements OnInit {
   displayedColumnsKeys: string[];
   displayedColumns: string[] = ['totalAmount', 'name', 'divideType', 'value'];
   dataSourceObj:any = [ {
-    memberName:  "sada",
-    type:  "adada",
-    value:  "daddad"
+    totalAmount:  "1000.00",
+    name:  "Thusitha",
+    divideType:  "PERCENTAGE",
+    value: 50
   }];
   model: any;
   @ViewChild('form', { static: true }) form: NgForm;
@@ -58,14 +59,14 @@ export class SplitAmountComponent implements OnInit {
     this.model = this.layout.getConfig();
     this.resetFormGroup = new FormGroup({
       totalAmount: new FormControl(''),
-      memberName: new FormControl(''),
-      type: new FormControl(''),
+      name: new FormControl(''),
+      divideType: new FormControl(''),
       value: new FormControl('')
     });
     // this.displayedColumnsKeys = this.displayedColumns.map((col) => col.key);
   }
 
-  constructor(private layout: LayoutService,public dialog: MatDialog) {}
+  constructor(private layout: LayoutService,public dialog: MatDialog,private changeDetectorRefs: ChangeDetectorRef) {}
 
 
 
@@ -82,14 +83,22 @@ export class SplitAmountComponent implements OnInit {
   }
 
 
-  addMember(){
+  addSplit(){
     let memberObj :any =  {
-      memberName:  "sada",
-      type:  "adada",
-      value:  "daddad"
+      totalAmount:  "sada",
+      name:  "adada",
+      divideType:  "daddad",
+      value:"sada"
     }
-    this.dataSourceObj.push(memberObj);
+
     console.log(this.dataSourceObj)
+    this.refresh(memberObj);
+  }
+
+  refresh(memberObj:any) {
+    this.dataSourceObj.push(memberObj);
+      this.changeDetectorRefs.detectChanges();
+    // });
   }
 
 }
